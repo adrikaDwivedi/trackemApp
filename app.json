@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "track.em",
-    "slug": "track.em",
+    "name": "track Em",
+    "slug": "track-em",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,20 +10,40 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "plugins": [
+        "@react-native-firebase/app",
+        "@react-native-firebase/auth"
+      ]
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
+       "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ], 
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.adrikad.trackem",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAkvZu3BcspiJPDd6IqdMnhSCqmkAhmEiA"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0501d0f1-312b-455e-beaf-3aa319911b59"
+      }
     }
   }
 }

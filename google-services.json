@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "658108861422",
+    "project_id": "trackem-bb07f",
+    "storage_bucket": "trackem-bb07f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658108861422:android:edf82dd68dd1d6c4039cff",
+        "android_client_info": {
+          "package_name": "com.adrikad.trackem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzxd1vuYe7LoTJ1TpjicCiahg040eCesA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
