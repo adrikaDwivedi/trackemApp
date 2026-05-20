@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import RequestCard from '../components/RequestCard'
 
 const OtherProfiles = () => {
   return (
     <View style={styles.container}>
-      <Text>OtherProfiles</Text>
+     <RequestCard />
     </View>
   )
 }
