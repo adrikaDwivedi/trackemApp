@@ -7,7 +7,10 @@ const RequestCard = () => {
       <View style={styles.reqcard}>
     <Text style={styles.reqtext}>Request location - </Text>
       
-      <TouchableOpacity style={styles.btn} >
+      <TouchableOpacity style={styles.btn} onPress = 
+      { () =>{
+        console.log("button pressed");
+        }}>
         <Text>Request</Text>
       </TouchableOpacity>
       </View>
@@ -29,17 +32,18 @@ const styles = StyleSheet.create({
         width: 350,
         height: 400,
         backgroundColor: "lightblue",
+        borderRadius: 28,
     },
     reqtext:{
         fontSize: 28,
         fontWeight: "bold",
         alignSelf: "center",
         justifyContent: "center",
-        marginTop:28,
+        marginTop:150,
     },
     btn:{
         padding: 14,
-        width: 100,
+        width: 200,
         height: 50,
         backgroundColor: "white",
         alignSelf: "center",
