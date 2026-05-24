@@ -20,61 +20,26 @@ import { auth } from "../firebase/config";
 
 
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
  const navigation = useNavigation();
 // const auth = getAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
 
  const handleAuth = async () => {
   try {
-    // Validation
-    if (!email || !password) {
-      Alert.alert("Validation Error", "Please fill in all fields.");
-      return;
-    }
-
-    if (email.length < 5 || !email.includes("@")) {
-      Alert.alert("Invalid Email", "Please enter a valid email address.");
-      return;
-    }
-
-    if (!isLogin) {
-      if (password.length < 6) {
-        Alert.alert("Weak Password", "Password must be at least 6 characters.");
-        return;
-      }
-      if (password !== confirmPassword) {
-        Alert.alert("Password Mismatch", "Passwords do not match. Please try again.");
-        return;
-      }
-    }
-    
     if (isLogin) {
       await signInWithEmailAndPassword(auth, email, password);
     } else {
       await createUserWithEmailAndPassword(auth, email, password);
     }
 
-    navigation.replace("BottomTabNav");
+    navigation.replace("MainScreen");
 
   } catch (err) {
-    let message = err.message;
-    if (err.code === "auth/user-not-found") {
-      message = "User not found. Please sign up.";
-    } else if (err.code === "auth/wrong-password") {
-      message = "Incorrect password. Please try again.";
-    } else if (err.code === "auth/email-already-in-use") {
-      message = "Email already in use. Please log in instead.";
-    } else if (err.code === "auth/weak-password") {
-      message = "Password is too weak. Use at least 6 characters.";
-    } else if (err.code === "auth/invalid-email") {
-      message = "Invalid email address.";
-    }
-    Alert.alert("Auth Error", message);
+    Alert.alert("Auth Error", err.message);
   }
 };
 
@@ -112,25 +77,11 @@ export default function LoginScreen() {
               style={styles.input}
             />
 
-            {!isLogin && (
-              <>
-                <Text style={styles.label}>CONFIRM PASSWORD</Text>
-                <TextInput
-                  placeholder="Re-enter your password"
-                  placeholderTextColor="#9AA0A6"
-                  value={confirmPassword}
-                  onChangeText={setConfirmPassword}
-                  secureTextEntry
-                  style={styles.input}
-                />
-              </>
-            )}
-
             <TouchableOpacity onPress={handleAuth} style={styles.primaryButton} activeOpacity={0.85}>
               <Text style={styles.primaryButtonText}>{isLogin ? "Login" : "Create Account"}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => {setIsLogin(!isLogin); setConfirmPassword("");}} style={styles.secondaryButton} activeOpacity={0.85}>
+            <TouchableOpacity onPress={() => setIsLogin(!isLogin)} style={styles.secondaryButton} activeOpacity={0.85}>
               <Text style={styles.secondaryButtonText}>
                 {isLogin ? "New here? Create account" : "Already have an account? Login"}
               </Text>
